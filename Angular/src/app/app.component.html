@@ -1,0 +1,47 @@
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/login">SSM Car Rental System</a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Signup</a>
+      <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+  </nz-header>
+</div>
+<div *ngIf="isAdminLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/admin/dashboard">SSM Car Rental System</a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/admin/car" routerLinkActive="active">Post Car</a>
+      <a nz-button nzType="link" routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
+      <a nz-button nzType="link" routerLink="/admin/car/search" routerLinkActive="active">Search</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+  </nz-header>
+</div>
+<div *ngIf="isCustomerLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+    <div class="navbar-title">
+      <a routerLink="/customer/dashbaord">SSM Car Rental System</a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/customer/bookings" routerLinkActive="active">Bookings</a>
+      <a nz-button nzType="link" routerLink="/customer/search" routerLinkActive="active">Search</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+  </nz-header>
+</div>
+<router-outlet></router-outlet>
+
+<div *ngIf="isIndexPage()">
+  <img src="./assets/background2.png" style="width: 100%; height: 100vh; object-fit: cover; position: fixed; top: 0; left: 0; z-index: -1;" />
+  <div style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 10px;">
+    <h1 style="text-align: center;">Welcome to SSM Car Rental System</h1>
+    <p style="text-align: center; margin-top: 20px;">Please click <a href="/login">here</a> to login.</p>
+  </div>
+</div>
